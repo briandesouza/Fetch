@@ -7,6 +7,9 @@ target 'Fetch' do
 
   # Pods for Fetch
   pod 'Firebase/Core'
+  pod 'Firebase/Auth'
+  pod 'Firebase/Storage'
+  pod 'Firebase/Database'
 
   target 'FetchTests' do
     inherit! :search_paths
