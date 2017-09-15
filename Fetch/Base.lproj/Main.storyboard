@@ -102,7 +102,7 @@
         <!--Sign InVC-->
         <scene sceneID="fR3-ev-c5T">
             <objects>
-                <viewController id="gtD-g6-g9F" customClass="SignInVC" sceneMemberID="viewController">
+                <viewController id="gtD-g6-g9F" customClass="SignInVC" customModule="Fetch" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="eUM-vK-qGP"/>
                         <viewControllerLayoutGuide type="bottom" id="e3s-6a-rUu"/>
@@ -121,9 +121,12 @@
                                 <state key="normal" title="Sign Up">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="signInBtnPressed:" destination="gtD-g6-g9F" eventType="touchUpInside" id="xKV-v6-KET"/>
+                                </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hkH-hL-cQi">
-                                <rect key="frame" x="91.5" y="597" width="192" height="30"/>
+                                <rect key="frame" x="93.5" y="597" width="188" height="30"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Already have an account?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DjQ-ea-y2E">
                                         <rect key="frame" x="2" y="0.0" width="139" height="30"/>
@@ -132,9 +135,14 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8d6-1t-JaA">
-                                        <rect key="frame" x="151" y="0.0" width="39" height="30"/>
+                                        <rect key="frame" x="147" y="0.0" width="39" height="30"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="12"/>
-                                        <state key="normal" title="Sign In"/>
+                                        <state key="normal" title="Sign In">
+                                            <color key="titleColor" red="0.3411764706" green="0.6705882353" blue="0.87058823529999996" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="signUpBtnPressed:" destination="gtD-g6-g9F" eventType="touchUpInside" id="7is-BF-uMh"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -143,7 +151,7 @@
                                     <constraint firstItem="DjQ-ea-y2E" firstAttribute="leading" secondItem="hkH-hL-cQi" secondAttribute="leading" constant="2" id="9Fj-gI-adX"/>
                                     <constraint firstAttribute="bottom" secondItem="DjQ-ea-y2E" secondAttribute="bottom" id="Nrz-NX-tMq"/>
                                     <constraint firstItem="8d6-1t-JaA" firstAttribute="top" secondItem="hkH-hL-cQi" secondAttribute="top" id="Vqi-Pi-uXA"/>
-                                    <constraint firstItem="8d6-1t-JaA" firstAttribute="leading" secondItem="DjQ-ea-y2E" secondAttribute="trailing" constant="10" id="YGf-Wx-Gmf"/>
+                                    <constraint firstItem="8d6-1t-JaA" firstAttribute="leading" secondItem="DjQ-ea-y2E" secondAttribute="trailing" constant="6" id="YGf-Wx-Gmf"/>
                                     <constraint firstAttribute="bottom" secondItem="8d6-1t-JaA" secondAttribute="bottom" id="YJ0-sc-A53"/>
                                     <constraint firstAttribute="trailing" secondItem="8d6-1t-JaA" secondAttribute="trailing" constant="2" id="ni9-zN-vfQ"/>
                                     <constraint firstItem="DjQ-ea-y2E" firstAttribute="top" secondItem="hkH-hL-cQi" secondAttribute="top" id="s38-SA-MRF"/>
@@ -157,18 +165,18 @@
                                 </constraints>
                             </imageView>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AhR-HW-zd6">
-                                <rect key="frame" x="77.5" y="150" width="220" height="220"/>
+                                <rect key="frame" x="0.0" y="150" width="375" height="220"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="220" id="9wC-RE-MnI"/>
                                     <constraint firstAttribute="height" constant="220" id="IaZ-so-BdQ"/>
                                 </constraints>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="AhR-HW-zd6" firstAttribute="centerX" secondItem="ORz-Uw-7Bj" secondAttribute="centerX" id="195-bU-DwX"/>
                             <constraint firstItem="e3s-6a-rUu" firstAttribute="top" secondItem="hkH-hL-cQi" secondAttribute="bottom" constant="40" id="EYy-Jk-4QG"/>
                             <constraint firstItem="hkH-hL-cQi" firstAttribute="top" secondItem="wVd-Q7-zsG" secondAttribute="bottom" constant="6" id="LCW-4F-gH8"/>
+                            <constraint firstItem="AhR-HW-zd6" firstAttribute="leading" secondItem="ORz-Uw-7Bj" secondAttribute="leading" id="PlE-Cf-dgz"/>
+                            <constraint firstAttribute="trailing" secondItem="AhR-HW-zd6" secondAttribute="trailing" id="aFe-Ne-R2h"/>
                             <constraint firstItem="td1-Kw-89a" firstAttribute="top" secondItem="eUM-vK-qGP" secondAttribute="bottom" constant="40" id="jd9-aw-5c9"/>
                             <constraint firstItem="wVd-Q7-zsG" firstAttribute="leading" secondItem="ORz-Uw-7Bj" secondAttribute="leadingMargin" constant="20" id="kRi-0i-xgl"/>
                             <constraint firstAttribute="trailingMargin" secondItem="wVd-Q7-zsG" secondAttribute="trailing" constant="20" id="sQt-Do-KK3"/>
@@ -179,6 +187,9 @@
                     </view>
                     <connections>
                         <outlet property="scrollViewIntro" destination="AhR-HW-zd6" id="Hns-Jd-vF6"/>
+                        <outlet property="signInBtn" destination="wVd-Q7-zsG" id="Vxi-Zg-R6m"/>
+                        <outlet property="signInLbl" destination="DjQ-ea-y2E" id="uEv-kz-d6b"/>
+                        <outlet property="signUpBtn" destination="8d6-1t-JaA" id="XSW-Pm-7I0"/>
                         <segue destination="49e-Tb-3d3" kind="showDetail" id="Gdj-Ze-BFx"/>
                     </connections>
                 </viewController>
