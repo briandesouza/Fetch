@@ -1,0 +1,6 @@
+framework module Pods_FetchUITests {
+  umbrella header "Pods-FetchUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
