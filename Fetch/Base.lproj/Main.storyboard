@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="gtD-g6-g9F">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -98,6 +99,93 @@
             </objects>
             <point key="canvasLocation" x="750" y="360"/>
         </scene>
+        <!--Sign InVC-->
+        <scene sceneID="fR3-ev-c5T">
+            <objects>
+                <viewController id="gtD-g6-g9F" customClass="SignInVC" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="eUM-vK-qGP"/>
+                        <viewControllerLayoutGuide type="bottom" id="e3s-6a-rUu"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ORz-Uw-7Bj">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wVd-Q7-zsG">
+                                <rect key="frame" x="36" y="541" width="303" height="50"/>
+                                <color key="backgroundColor" red="0.32941176470588235" green="0.61568627450980395" blue="0.83921568627450982" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="bln-eW-mJr"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="16"/>
+                                <state key="normal" title="Sign Up">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hkH-hL-cQi">
+                                <rect key="frame" x="91.5" y="597" width="192" height="30"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Already have an account?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DjQ-ea-y2E">
+                                        <rect key="frame" x="2" y="0.0" width="139" height="30"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8d6-1t-JaA">
+                                        <rect key="frame" x="151" y="0.0" width="39" height="30"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="12"/>
+                                        <state key="normal" title="Sign In"/>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="6AW-Jj-I3O"/>
+                                    <constraint firstItem="DjQ-ea-y2E" firstAttribute="leading" secondItem="hkH-hL-cQi" secondAttribute="leading" constant="2" id="9Fj-gI-adX"/>
+                                    <constraint firstAttribute="bottom" secondItem="DjQ-ea-y2E" secondAttribute="bottom" id="Nrz-NX-tMq"/>
+                                    <constraint firstItem="8d6-1t-JaA" firstAttribute="top" secondItem="hkH-hL-cQi" secondAttribute="top" id="Vqi-Pi-uXA"/>
+                                    <constraint firstItem="8d6-1t-JaA" firstAttribute="leading" secondItem="DjQ-ea-y2E" secondAttribute="trailing" constant="10" id="YGf-Wx-Gmf"/>
+                                    <constraint firstAttribute="bottom" secondItem="8d6-1t-JaA" secondAttribute="bottom" id="YJ0-sc-A53"/>
+                                    <constraint firstAttribute="trailing" secondItem="8d6-1t-JaA" secondAttribute="trailing" constant="2" id="ni9-zN-vfQ"/>
+                                    <constraint firstItem="DjQ-ea-y2E" firstAttribute="top" secondItem="hkH-hL-cQi" secondAttribute="top" id="s38-SA-MRF"/>
+                                </constraints>
+                            </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fetchlogo" translatesAutoresizingMaskIntoConstraints="NO" id="td1-Kw-89a">
+                                <rect key="frame" x="107.5" y="60" width="160" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="160" id="B56-Ma-07K"/>
+                                    <constraint firstAttribute="height" constant="50" id="ICh-hE-sTA"/>
+                                </constraints>
+                            </imageView>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AhR-HW-zd6">
+                                <rect key="frame" x="77.5" y="150" width="220" height="220"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="220" id="9wC-RE-MnI"/>
+                                    <constraint firstAttribute="height" constant="220" id="IaZ-so-BdQ"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="AhR-HW-zd6" firstAttribute="centerX" secondItem="ORz-Uw-7Bj" secondAttribute="centerX" id="195-bU-DwX"/>
+                            <constraint firstItem="e3s-6a-rUu" firstAttribute="top" secondItem="hkH-hL-cQi" secondAttribute="bottom" constant="40" id="EYy-Jk-4QG"/>
+                            <constraint firstItem="hkH-hL-cQi" firstAttribute="top" secondItem="wVd-Q7-zsG" secondAttribute="bottom" constant="6" id="LCW-4F-gH8"/>
+                            <constraint firstItem="td1-Kw-89a" firstAttribute="top" secondItem="eUM-vK-qGP" secondAttribute="bottom" constant="40" id="jd9-aw-5c9"/>
+                            <constraint firstItem="wVd-Q7-zsG" firstAttribute="leading" secondItem="ORz-Uw-7Bj" secondAttribute="leadingMargin" constant="20" id="kRi-0i-xgl"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="wVd-Q7-zsG" secondAttribute="trailing" constant="20" id="sQt-Do-KK3"/>
+                            <constraint firstItem="AhR-HW-zd6" firstAttribute="top" secondItem="td1-Kw-89a" secondAttribute="bottom" constant="40" id="tBW-MV-Xlt"/>
+                            <constraint firstItem="hkH-hL-cQi" firstAttribute="centerX" secondItem="ORz-Uw-7Bj" secondAttribute="centerX" id="uQv-Wf-9tg"/>
+                            <constraint firstItem="td1-Kw-89a" firstAttribute="centerX" secondItem="ORz-Uw-7Bj" secondAttribute="centerX" id="vT3-S3-j6w"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="scrollViewIntro" destination="AhR-HW-zd6" id="Hns-Jd-vF6"/>
+                        <segue destination="49e-Tb-3d3" kind="showDetail" id="Gdj-Ze-BFx"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IYO-en-h0E" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-866.39999999999998" y="-0.44977511244377816"/>
+        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
             <objects>
@@ -119,6 +207,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="fetchlogo" width="540" height="225"/>
         <image name="first" width="30" height="30"/>
         <image name="second" width="30" height="30"/>
     </resources>
