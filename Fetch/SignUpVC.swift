@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SignUpVC: UIViewController, UITextFieldDelegate, UIScrollViewDelegate {
+class SignUpVC: UIViewController, UITextFieldDelegate, UIScrollViewDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
     @IBOutlet weak var signUpScrollView: UIScrollView!
     @IBOutlet weak var signUpInnerView: UIView!
@@ -25,21 +25,38 @@ class SignUpVC: UIViewController, UITextFieldDelegate, UIScrollViewDelegate {
     @IBOutlet weak var scrollBottomCon: NSLayoutConstraint!
     
     @IBOutlet weak var youBtn: UIButton!
-    @IBOutlet weak var photoBtn: UIButton!
     @IBOutlet weak var dogsBtn: UIButton!
+    
+    @IBOutlet weak var profilePicBack: UIView!
+    @IBOutlet weak var profilePicImg: UIImageView!
+    
+    @IBOutlet weak var profileCircBack: UIView!
+    @IBOutlet weak var profileCircImg: UIImageView!
     
     var nextBtn = UIButton()
     var kbHeight: CGFloat!
     var firstTimeOpen = false
     var pageNumber = 1
+    var imagePicker = UIImagePickerController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         signUpScrollView.delegate = self
+        //signUpScrollView.isPagingEnabled = true
+        signUpScrollView.alwaysBounceHorizontal = false
+        signUpScrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 60, right: 0)
+        signUpScrollView.contentSize = CGSize(width: view.frame.size.width * 2, height: signUpScrollView.frame.size.height)
         
         signUpProgBack.layer.cornerRadius = 5
         signUpProgBack.layer.masksToBounds = true
+        
+        profilePicBack.layer.cornerRadius = 50
+        profilePicImg.layer.cornerRadius = 46
+        profilePicImg.layer.masksToBounds = true
+        
+        profileCircBack.layer.cornerRadius = 16
+        profileCircImg.layer.cornerRadius = 13
         
         signUpProgBar.progressViewStyle = .bar
         //signUpProgBar.backgroundColor = lightThemeGreen
@@ -82,8 +99,6 @@ class SignUpVC: UIViewController, UITextFieldDelegate, UIScrollViewDelegate {
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
-        
-        signUpScrollView.contentSize = CGSize(width: view.frame.size.width * 3, height: signUpScrollView.frame.size.height)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -135,7 +150,7 @@ class SignUpVC: UIViewController, UITextFieldDelegate, UIScrollViewDelegate {
         if up == true {
             self.signUpScrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: kbHeight + 10, right: 0)
         } else {
-            self.signUpScrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+            self.signUpScrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 60, right: 0)
         }
         
         UIView.animate(withDuration: 0.3, animations: {
@@ -152,18 +167,14 @@ class SignUpVC: UIViewController, UITextFieldDelegate, UIScrollViewDelegate {
             if checkInputs() {
                 
                 print("Good Profile Info!")
-                signUpProgBar.animate(duration: 0.5, value: Float(0.5))
-                signUpScrollView.setContentOffset(CGPoint(x: view.frame.size.width, y: 0), animated: true)
+                signUpProgBar.animate(duration: 0.5, value: Float(0.75))
+                signUpScrollView.setContentOffset(CGPoint(x: view.frame.size.width * 2, y: 0), animated: true)
                 
             } else {
                 print("Incorrect Info!")
             }
             
         } else if pageNumber == 1 {
-            
-            signUpProgBar.animate(duration: 0.5, value: Float(0.82))
-            signUpScrollView.setContentOffset(CGPoint(x: view.frame.size.width * 2, y: 0), animated: true)
-        } else {
             
             // Segue Here if Dog Info is Good
         }
@@ -173,15 +184,15 @@ class SignUpVC: UIViewController, UITextFieldDelegate, UIScrollViewDelegate {
     
     @IBAction func youBtnPressed(_ sender: Any) {
         
-        signUpProgBar.animate(duration: 0.5, value: Float(0.15))
+        signUpProgBar.animate(duration: 0.5, value: Float(0.25))
         signUpScrollView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
         pageNumber = 0
     }
     
-    @IBAction func photoBtnPressed(_ sender: Any) {
+    @IBAction func dogsBtnPressed(_ sender: Any) {
         
         if checkInputs() {
-            signUpProgBar.animate(duration: 0.5, value: Float(0.5))
+            signUpProgBar.animate(duration: 0.5, value: Float(0.75))
             signUpScrollView.setContentOffset(CGPoint(x: view.frame.size.width, y: 0), animated: true)
             pageNumber = 1
         } else {
@@ -189,15 +200,26 @@ class SignUpVC: UIViewController, UITextFieldDelegate, UIScrollViewDelegate {
         }
     }
     
-    @IBAction func dogsBtnPressed(_ sender: Any) {
+    @IBAction func chooseProfilePicBtnPressed(_ sender: Any) {
         
-        if checkDogInputs() {
-            signUpProgBar.animate(duration: 0.5, value: Float(0.82))
-            signUpScrollView.setContentOffset(CGPoint(x: view.frame.size.width * 2, y: 0), animated: true)
-            pageNumber = 2
-        } else {
-            print("Incorrect Info!")
+        if UIImagePickerController.isSourceTypeAvailable(.savedPhotosAlbum) {
+            print("Button capture")
+            
+            imagePicker.delegate = self
+            imagePicker.sourceType = .savedPhotosAlbum
+            imagePicker.allowsEditing = false
+            
+            self.present(imagePicker, animated: true, completion: nil)
         }
+    }
+    
+    internal func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        
+        if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            profilePicImg.image = pickedImage
+        }
+        
+        self.dismiss(animated: true, completion: nil)
     }
     
 }
