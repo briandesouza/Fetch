@@ -22,7 +22,7 @@ class SignInVC: UIViewController, UIScrollViewDelegate {
     lazy var pageControl: UIPageControl = {
         let pc = UIPageControl()
         pc.numberOfPages = 3
-        pc.pageIndicatorTintColor = UIColor(colorLiteralRed: 241/255, green: 241/255, blue: 241/255, alpha: 1)
+        pc.pageIndicatorTintColor = UIColor(red: 241/255, green: 241/255, blue: 241/255, alpha: 1)
         pc.currentPageIndicatorTintColor = UIColor(red: 84/255, green: 157/255, blue: 214/255, alpha: 1)
         return pc
     }()
@@ -147,6 +147,7 @@ class SignInVC: UIViewController, UIScrollViewDelegate {
     }
     
     @IBAction func signInBtnPressed(_ sender: Any) {
+        performSegue(withIdentifier: "goSignUp", sender: self)
     }
 
     @IBAction func signUpBtnPressed(_ sender: Any) {
