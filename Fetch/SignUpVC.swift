@@ -30,6 +30,8 @@ class SignUpVC: UIViewController, UITextFieldDelegate, UIScrollViewDelegate, UIN
     @IBOutlet weak var profilePicImg: UIImageView!
     @IBOutlet weak var profileCircBack: UIView!
     @IBOutlet weak var profileCircImg: UIImageView!
+    @IBOutlet weak var youLbl: UILabel!
+    @IBOutlet weak var dogsLbl: UILabel!
     // --- Views
     var nextBtn = UIButton()
     var imagePicker = UIImagePickerController()
@@ -77,6 +79,8 @@ class SignUpVC: UIViewController, UITextFieldDelegate, UIScrollViewDelegate, UIN
         cityField.delegate = self
         passField.delegate = self
         conPassField.delegate = self
+        
+        youLbl.font = UIFont(name: "Avenir-Heavy", size: 16.0)
 
     }
     
@@ -98,10 +102,10 @@ class SignUpVC: UIViewController, UITextFieldDelegate, UIScrollViewDelegate, UIN
     override func viewWillAppear(_ animated:Bool) {
         super.viewWillAppear(animated)
         
-        if !firstTimeOpen {
+        if !firstAnimation {
             
             animateTextFields()
-            firstTimeOpen = true
+            firstAnimation = true
         }
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
@@ -249,6 +253,8 @@ class SignUpVC: UIViewController, UITextFieldDelegate, UIScrollViewDelegate, UIN
             if checkInputs() {
                 
                 print("Good Profile Info!")
+                youLbl.font = UIFont(name: "Avenir-Medium", size: 16.0)
+                dogsLbl.font = UIFont(name: "Avenir-Heavy", size: 16.0)
                 signUpProgBar.animate(duration: 0.5, value: Float(0.75))
                 signUpScrollView.setContentOffset(CGPoint(x: view.frame.size.width * 2, y: 0), animated: true)
                 
@@ -259,6 +265,7 @@ class SignUpVC: UIViewController, UITextFieldDelegate, UIScrollViewDelegate, UIN
         } else if pageNumber == 1 {
             
             // Segue Here if Dog Info is Good
+            
         }
         
         print("After: ", pageNumber)
@@ -269,6 +276,9 @@ class SignUpVC: UIViewController, UITextFieldDelegate, UIScrollViewDelegate, UIN
         signUpProgBar.animate(duration: 0.5, value: Float(0.25))
         signUpScrollView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
         pageNumber = 0
+        
+        youLbl.font = UIFont(name: "Avenir-Heavy", size: 16.0)
+        dogsLbl.font = UIFont(name: "Avenir-Medium", size: 16.0)
     }
     
     @IBAction func dogsBtnPressed(_ sender: Any) {
@@ -277,6 +287,9 @@ class SignUpVC: UIViewController, UITextFieldDelegate, UIScrollViewDelegate, UIN
             signUpProgBar.animate(duration: 0.5, value: Float(0.75))
             signUpScrollView.setContentOffset(CGPoint(x: view.frame.size.width, y: 0), animated: true)
             pageNumber = 1
+            
+            youLbl.font = UIFont(name: "Avenir-Medium", size: 16.0)
+            dogsLbl.font = UIFont(name: "Avenir-Heavy", size: 16.0)
         } else {
             print("Incorrect Info!")
         }
