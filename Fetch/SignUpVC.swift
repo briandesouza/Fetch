@@ -10,6 +10,8 @@ import UIKit
 
 class SignUpVC: UIViewController, UITextFieldDelegate, UIScrollViewDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
+    
+    // --- IBs
     @IBOutlet weak var signUpScrollView: UIScrollView!
     @IBOutlet weak var signUpInnerView: UIView!
     @IBOutlet weak var nameField: AnimatedTextField!
@@ -19,31 +21,29 @@ class SignUpVC: UIViewController, UITextFieldDelegate, UIScrollViewDelegate, UIN
     @IBOutlet weak var cityField: AnimatedTextField!
     @IBOutlet weak var passField: AnimatedTextField!
     @IBOutlet weak var conPassField: AnimatedTextField!
-    
     @IBOutlet weak var signUpProgBack: UIView!
     @IBOutlet weak var signUpProgBar: UIProgressView!
     @IBOutlet weak var scrollBottomCon: NSLayoutConstraint!
-    
     @IBOutlet weak var youBtn: UIButton!
     @IBOutlet weak var dogsBtn: UIButton!
-    
     @IBOutlet weak var profilePicBack: UIView!
     @IBOutlet weak var profilePicImg: UIImageView!
-    
     @IBOutlet weak var profileCircBack: UIView!
     @IBOutlet weak var profileCircImg: UIImageView!
-    
+    // --- Views
     var nextBtn = UIButton()
-    var kbHeight: CGFloat!
-    var firstTimeOpen = false
-    var pageNumber = 1
     var imagePicker = UIImagePickerController()
+    // --- Numbers
+    var kbHeight: CGFloat!
+    var pageNumber = 1
+    // --- Bools
+    var firstTimeOpen = false
+    var firstAnimation = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         signUpScrollView.delegate = self
-        //signUpScrollView.isPagingEnabled = true
         signUpScrollView.alwaysBounceHorizontal = false
         signUpScrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 60, right: 0)
         signUpScrollView.contentSize = CGSize(width: view.frame.size.width * 2, height: signUpScrollView.frame.size.height)
@@ -59,7 +59,6 @@ class SignUpVC: UIViewController, UITextFieldDelegate, UIScrollViewDelegate, UIN
         profileCircImg.layer.cornerRadius = 13
         
         signUpProgBar.progressViewStyle = .bar
-        //signUpProgBar.backgroundColor = lightThemeGreen
         signUpProgBar.transform = signUpProgBar.transform.scaledBy(x: 1, y: 10)
         signUpProgBar.progressTintColor = UIColor(red: 87/255, green: 171/255, blue: 222/255, alpha: 1)
         
@@ -78,8 +77,7 @@ class SignUpVC: UIViewController, UITextFieldDelegate, UIScrollViewDelegate, UIN
         cityField.delegate = self
         passField.delegate = self
         conPassField.delegate = self
-        
-        // Do any additional setup after loading the view.
+
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -88,7 +86,7 @@ class SignUpVC: UIViewController, UITextFieldDelegate, UIScrollViewDelegate, UIN
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -100,7 +98,11 @@ class SignUpVC: UIViewController, UITextFieldDelegate, UIScrollViewDelegate, UIN
     override func viewWillAppear(_ animated:Bool) {
         super.viewWillAppear(animated)
         
-        animateTextFields()
+        if !firstTimeOpen {
+            
+            animateTextFields()
+            firstTimeOpen = true
+        }
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
