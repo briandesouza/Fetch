@@ -79,8 +79,11 @@ class SignUpVC: UIViewController, UITextFieldDelegate, UIScrollViewDelegate, UIN
         passField.delegate = self
         conPassField.delegate = self
         
-
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+    
     }
 
     override func didReceiveMemoryWarning() {
@@ -96,6 +99,8 @@ class SignUpVC: UIViewController, UITextFieldDelegate, UIScrollViewDelegate, UIN
     
     override func viewWillAppear(_ animated:Bool) {
         super.viewWillAppear(animated)
+        
+        animateTextFields()
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
@@ -156,6 +161,81 @@ class SignUpVC: UIViewController, UITextFieldDelegate, UIScrollViewDelegate, UIN
         UIView.animate(withDuration: 0.3, animations: {
             
         })
+    }
+    
+    func animateTextFields() {
+        
+        nameField.alpha = 0.0
+        nameField.transform = CGAffineTransform(translationX: 0, y: 10)
+        emailField.alpha = 0.0
+        emailField.transform = CGAffineTransform(translationX: 0, y: 10)
+        phoneField.alpha = 0.0
+        phoneField.transform = CGAffineTransform(translationX: 0, y: 10)
+        usernameField.alpha = 0.0
+        usernameField.transform = CGAffineTransform(translationX: 0, y: 10)
+        cityField.alpha = 0.0
+        cityField.transform = CGAffineTransform(translationX: 0, y: 10)
+        passField.alpha = 0.0
+        passField.transform = CGAffineTransform(translationX: 0, y: 10)
+        conPassField.alpha = 0.0
+        conPassField.transform = CGAffineTransform(translationX: 0, y: 10)
+        
+        UIView.animate( withDuration: 0.6, delay: 0.0, animations: {
+            
+            self.nameField.transform = CGAffineTransform(translationX: 0, y: 0)
+            self.nameField.alpha = 1.0
+        }, completion: { finished in
+            
+        })
+        
+        UIView.animate( withDuration: 0.6, delay: 0.2, animations: {
+            
+            self.emailField.transform = CGAffineTransform(translationX: 0, y: 0)
+            self.emailField.alpha = 1.0
+        }, completion: { finished in
+                            
+        })
+        
+        UIView.animate( withDuration: 0.6, delay: 0.4, animations: {
+            
+            self.phoneField.transform = CGAffineTransform(translationX: 0, y: 0)
+            self.phoneField.alpha = 1.0
+        }, completion: { finished in
+            
+        })
+        
+        UIView.animate( withDuration: 0.6, delay: 0.4, animations: {
+            
+            self.usernameField.transform = CGAffineTransform(translationX: 0, y: 0)
+            self.usernameField.alpha = 1.0
+        }, completion: { finished in
+            
+        })
+        
+        UIView.animate( withDuration: 0.6, delay: 0.6, animations: {
+            
+            self.cityField.transform = CGAffineTransform(translationX: 0, y: 0)
+            self.cityField.alpha = 1.0
+        }, completion: { finished in
+            
+        })
+        
+        UIView.animate( withDuration: 0.6, delay: 0.8, animations: {
+            
+            self.passField.transform = CGAffineTransform(translationX: 0, y: 0)
+            self.passField.alpha = 1.0
+        }, completion: { finished in
+            
+        })
+        
+        UIView.animate( withDuration: 0.6, delay: 1.0, animations: {
+            
+            self.conPassField.transform = CGAffineTransform(translationX: 0, y: 0)
+            self.conPassField.alpha = 1.0
+        }, completion: { finished in
+            
+        })
+        
     }
     
     @objc func nextBtnPressed() {
