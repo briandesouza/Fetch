@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class SignUpVC: UIViewController, UITextFieldDelegate, UIScrollViewDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
@@ -37,13 +38,17 @@ class SignUpVC: UIViewController, UITextFieldDelegate, UIScrollViewDelegate, UIN
     var imagePicker = UIImagePickerController()
     // --- Numbers
     var kbHeight: CGFloat!
-    var pageNumber = 1
+    var pageNumber = 0
     // --- Bools
     var firstTimeOpen = false
     var firstAnimation = false
+    var ref: DatabaseReference!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        ref = Database.database().reference()
         
         signUpScrollView.delegate = self
         signUpScrollView.alwaysBounceHorizontal = false
@@ -124,8 +129,28 @@ class SignUpVC: UIViewController, UITextFieldDelegate, UIScrollViewDelegate, UIN
     
     @objc func checkInputs() -> Bool {
         
-        //TODO: Check for valid inpus in all fields for the main profile
+        let inputEmail = emailField.text?.lowercased()
+        let inputPass = passField.text
         
+        print("input email", inputEmail)
+        print("input pass", inputPass)
+        
+        Auth.auth().createUser(withEmail: inputEmail!, password: inputPass!) { (user, error) in
+            if(error != nil){
+                print("error created", error?.localizedDescription) //This is the error description
+                return
+                //handles error
+            }
+            
+            //Sets user values in the database
+            self.ref.child("users").child((user?.uid)!).child("username").setValue(self.usernameField.text)
+            self.ref.child("users").child((user?.uid)!).child("name").setValue(self.nameField.text?.capitalized)
+            self.ref.child("users").child((user?.uid)!).child("phone").setValue(self.phoneField.text)
+            self.ref.child("users").child((user?.uid)!).child("city").setValue(self.self.cityField.text?.capitalized)
+            
+            print("\(user?.email) created")
+        }
+        //TODO: Check for valid inpus in all fields for the main profile
         return true
     }
     
@@ -262,7 +287,7 @@ class SignUpVC: UIViewController, UITextFieldDelegate, UIScrollViewDelegate, UIN
                 print("Incorrect Info!")
             }
             
-        } else if pageNumber == 1 {
+        } else {
             
             // Segue Here if Dog Info is Good
             
