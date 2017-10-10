@@ -6,7 +6,6 @@ target 'Fetch' do
   use_frameworks!
 
   # Pods for Fetch
-  pod 'Firebase'
   pod 'Firebase/Core'
   pod 'Firebase/Auth'
   pod 'Firebase/Storage'
@@ -15,21 +14,11 @@ target 'Fetch' do
   target 'FetchTests' do
     inherit! :search_paths
     # Pods for testing
-    pod 'Firebase'
-    pod 'Firebase/Core'
-    pod 'Firebase/Auth'
-    pod 'Firebase/Storage'
-    pod 'Firebase/Database'
   end
 
   target 'FetchUITests' do
     inherit! :search_paths
     # Pods for testing
-    pod 'Firebase'
-    pod 'Firebase/Core'
-    pod 'Firebase/Auth'
-    pod 'Firebase/Storage'
-    pod 'Firebase/Database'
   end
 
 end
