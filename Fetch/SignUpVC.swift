@@ -132,23 +132,64 @@ class SignUpVC: UIViewController, UITextFieldDelegate, UIScrollViewDelegate, UIN
         let inputEmail = emailField.text?.lowercased()
         let inputPass = passField.text
         
-        print("input email", inputEmail)
-        print("input pass", inputPass)
+        //Check If All Fields Are Filled
+        if(emailField.text == ""){
+            self.nextBtn.setTitle("Email Not Inserted", for: .normal)
+            return false
+        }
+        if(nameField.text == ""){
+            self.nextBtn.setTitle("Name Not Inserted", for: .normal)
+            return false
+        }
+        if(phoneField.text == ""){
+            self.nextBtn.setTitle("Phone Not Inserted", for: .normal)
+            return false
+        }
+        if(cityField.text == ""){
+            self.nextBtn.setTitle("City Not Inserted", for: .normal)
+            return false
+        }
+        if(usernameField.text == ""){
+            self.nextBtn.setTitle("City Not Inserted", for: .normal)
+            return false
+        }
+        
+        //Check if password match
+        if(passField.text != conPassField.text){
+            self.nextBtn.setTitle("Passwords Do Not Match", for: .normal)
+            return false
+        }
+        
         
         Auth.auth().createUser(withEmail: inputEmail!, password: inputPass!) { (user, error) in
             if(error != nil){
-                print("error created", error?.localizedDescription) //This is the error description
+                self.nextBtn.setTitle("\(String(describing: error?.localizedDescription))", for: .normal) //This is the error description
                 return
                 //handles error
             }
             
-            //Sets user values in the database
+            //Sets user's private values in the database
             self.ref.child("users").child((user?.uid)!).child("username").setValue(self.usernameField.text)
             self.ref.child("users").child((user?.uid)!).child("name").setValue(self.nameField.text?.capitalized)
             self.ref.child("users").child((user?.uid)!).child("phone").setValue(self.phoneField.text)
             self.ref.child("users").child((user?.uid)!).child("city").setValue(self.self.cityField.text?.capitalized)
             
-            print("\(user?.email) created")
+            
+            //Uploading Profile image to Firebase Storage
+            if self.profilePicImg.image != nil {
+                let storage = Storage.storage()
+                let storageRef = storage.reference().child("profiles/\(String(describing: self.usernameField.text!)).png")
+                if let uploadData = UIImagePNGRepresentation(self.profilePicImg.image!){
+                    storageRef.putData(uploadData, metadata: nil , completion: { (metadata, error) in
+                        if error != nil{
+                            print(error.debugDescription)
+                            return
+                        }
+                        //Saves Image URL to user's firebase database
+                        self.ref.child("users").child((user?.uid)!).child("profileURL").setValue(metadata?.downloadURL()!)
+                    })
+                }
+            }
         }
         //TODO: Check for valid inpus in all fields for the main profile
         return true
