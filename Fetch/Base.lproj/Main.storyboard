@@ -304,13 +304,13 @@
                                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="0nE-z0-tLM">
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
                                                     <subviews>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="face" translatesAutoresizingMaskIntoConstraints="NO" id="4Td-DH-AXB">
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gs" translatesAutoresizingMaskIntoConstraints="NO" id="4Td-DH-AXB">
                                                             <rect key="frame" x="0.0" y="0.0" width="124.5" height="100"/>
                                                         </imageView>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="face" translatesAutoresizingMaskIntoConstraints="NO" id="dYc-o8-SDm">
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gs" translatesAutoresizingMaskIntoConstraints="NO" id="dYc-o8-SDm">
                                                             <rect key="frame" x="125.5" y="0.0" width="124" height="100"/>
                                                         </imageView>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="face" translatesAutoresizingMaskIntoConstraints="NO" id="xg4-MP-2qR">
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gs" translatesAutoresizingMaskIntoConstraints="NO" id="xg4-MP-2qR">
                                                             <rect key="frame" x="250.5" y="0.0" width="124.5" height="100"/>
                                                         </imageView>
                                                     </subviews>
@@ -1170,7 +1170,7 @@
         <image name="second" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="pqK-4I-0gr"/>
+        <segue reference="NeA-AF-3G8"/>
         <segue reference="HGX-sW-qU3"/>
     </inferredMetricsTieBreakers>
 </document>

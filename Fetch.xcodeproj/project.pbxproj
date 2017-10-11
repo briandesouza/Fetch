@@ -10,7 +10,7 @@
 		203345631F8D5DB50017CD3D /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 203345621F8D5DB50017CD3D /* Colors.swift */; };
 		203345661F8D618A0017CD3D /* AddDogCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 203345641F8D618A0017CD3D /* AddDogCell.swift */; };
 		203345671F8D618A0017CD3D /* AddDogCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 203345651F8D618A0017CD3D /* AddDogCell.xib */; };
-		20356F081F6C47F1006466A2 /* SignInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20356F071F6C47F1006466A2 /* SignInVC.swift */; };
+		20356F081F6C47F1006466A2 /* LandPageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20356F071F6C47F1006466A2 /* LandPageVC.swift */; };
 		205066E51F8AE4F000343DCB /* AnimatedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205066E41F8AE4F000343DCB /* AnimatedTextField.swift */; };
 		205066E71F8AE53200343DCB /* TextFieldEffects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205066E61F8AE53200343DCB /* TextFieldEffects.swift */; };
 		205066E91F8AE60400343DCB /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205066E81F8AE60400343DCB /* SignUpVC.swift */; };
@@ -55,7 +55,7 @@
 		203345621F8D5DB50017CD3D /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		203345641F8D618A0017CD3D /* AddDogCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDogCell.swift; sourceTree = "<group>"; };
 		203345651F8D618A0017CD3D /* AddDogCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddDogCell.xib; sourceTree = "<group>"; };
-		20356F071F6C47F1006466A2 /* SignInVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInVC.swift; sourceTree = "<group>"; };
+		20356F071F6C47F1006466A2 /* LandPageVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LandPageVC.swift; sourceTree = "<group>"; };
 		205066E41F8AE4F000343DCB /* AnimatedTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedTextField.swift; sourceTree = "<group>"; };
 		205066E61F8AE53200343DCB /* TextFieldEffects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldEffects.swift; sourceTree = "<group>"; };
 		205066E81F8AE60400343DCB /* SignUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
@@ -163,7 +163,7 @@
 				ACC0A19A1F6C221000D90519 /* Assets.xcassets */,
 				ACC0A19C1F6C221000D90519 /* LaunchScreen.storyboard */,
 				ACC0A19F1F6C221000D90519 /* Info.plist */,
-				20356F071F6C47F1006466A2 /* SignInVC.swift */,
+				20356F071F6C47F1006466A2 /* LandPageVC.swift */,
 				205066E41F8AE4F000343DCB /* AnimatedTextField.swift */,
 				205066E61F8AE53200343DCB /* TextFieldEffects.swift */,
 				205066E81F8AE60400343DCB /* SignUpVC.swift */,
@@ -506,7 +506,7 @@
 				20AFF9501F8DF8E0001ABD11 /* ProfileListCell.swift in Sources */,
 				ACC0A1921F6C221000D90519 /* AppDelegate.swift in Sources */,
 				205066E71F8AE53200343DCB /* TextFieldEffects.swift in Sources */,
-				20356F081F6C47F1006466A2 /* SignInVC.swift in Sources */,
+				20356F081F6C47F1006466A2 /* LandPageVC.swift in Sources */,
 				20AFF94A1F8DE395001ABD11 /* LogInVC.swift in Sources */,
 				ACC0A1941F6C221000D90519 /* FirstViewController.swift in Sources */,
 				205066E51F8AE4F000343DCB /* AnimatedTextField.swift in Sources */,
