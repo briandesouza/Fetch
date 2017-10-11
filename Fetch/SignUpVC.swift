@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-class SignUpVC: UIViewController, UITextFieldDelegate, UIScrollViewDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+class SignUpVC: UIViewController, UITextFieldDelegate, UIScrollViewDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITableViewDelegate, UITableViewDataSource {
     
     
     // --- IBs
@@ -33,12 +33,17 @@ class SignUpVC: UIViewController, UITextFieldDelegate, UIScrollViewDelegate, UIN
     @IBOutlet weak var profileCircImg: UIImageView!
     @IBOutlet weak var youLbl: UILabel!
     @IBOutlet weak var dogsLbl: UILabel!
+    @IBOutlet weak var topHeader: UIView!
+    @IBOutlet weak var topLine: UIView!
+    
     // --- Views
     var nextBtn = UIButton()
     var imagePicker = UIImagePickerController()
+    var dogsTableView = UITableView()
     // --- Numbers
     var kbHeight: CGFloat!
     var pageNumber = 0
+    var numDogs = 4
     // --- Bools
     var firstTimeOpen = false
     var firstAnimation = false
@@ -86,11 +91,27 @@ class SignUpVC: UIViewController, UITextFieldDelegate, UIScrollViewDelegate, UIN
         conPassField.delegate = self
         
         youLbl.font = UIFont(name: "Avenir-Heavy", size: 16.0)
+        
+        // Create Dog Table View
+        dogsTableView.frame = CGRect(x: view.frame.size.width, y: 0, width: view.frame.size.width, height: view.frame.size.height - (topHeader.frame.size.height + topLine.frame.size.height + nextBtn.frame.size.height + 20))
+        dogsTableView.delegate = self
+        dogsTableView.dataSource = self
+        dogsTableView.backgroundColor = UIColor.red
+        dogsTableView.register(UINib(nibName: "AddDogCell", bundle: nil), forCellReuseIdentifier: "dogCell")
+        dogsTableView.register(UINib(nibName: "AddRowCell", bundle: nil), forCellReuseIdentifier: "addRow")
+        //dogsTableView.contentInset = .init(top: 15, left: 0, bottom: 0, right: 0)
+        //dogsTableView.rowHeight = UITableViewAutomaticDimension
+        dogsTableView.allowsSelection = false
+        //dogsTableView.estimatedRowHeight = 300
+        dogsTableView.separatorStyle = .none
+        dogsTableView.showsVerticalScrollIndicator = false
+        signUpScrollView.addSubview(dogsTableView)
 
     }
     
     override func viewDidAppear(_ animated: Bool) {
     
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -164,6 +185,7 @@ class SignUpVC: UIViewController, UITextFieldDelegate, UIScrollViewDelegate, UIN
         Auth.auth().createUser(withEmail: inputEmail!, password: inputPass!) { (user, error) in
             if(error != nil){
                 self.nextBtn.setTitle("\(String(describing: error?.localizedDescription))", for: .normal) //This is the error description
+                print(String(describing: error?.localizedDescription))
                 return
                 //handles error
             }
@@ -316,13 +338,14 @@ class SignUpVC: UIViewController, UITextFieldDelegate, UIScrollViewDelegate, UIN
         
         if pageNumber == 0 {
             
-            if checkInputs() {
+            if true {
                 
                 print("Good Profile Info!")
                 youLbl.font = UIFont(name: "Avenir-Medium", size: 16.0)
                 dogsLbl.font = UIFont(name: "Avenir-Heavy", size: 16.0)
                 signUpProgBar.animate(duration: 0.5, value: Float(0.75))
-                signUpScrollView.setContentOffset(CGPoint(x: view.frame.size.width * 2, y: 0), animated: true)
+                signUpScrollView.setContentOffset(CGPoint(x: view.frame.size.width, y: 0), animated: true)
+                signUpScrollView.isScrollEnabled = false
                 
             } else {
                 print("Incorrect Info!")
@@ -337,8 +360,40 @@ class SignUpVC: UIViewController, UITextFieldDelegate, UIScrollViewDelegate, UIN
         print("After: ", pageNumber)
     }
     
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        return numDogs + 1
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        if indexPath.row < numDogs {
+            let dogCell = tableView.dequeueReusableCell(withIdentifier: "dogCell", for: indexPath) as! AddDogCell
+            
+            dogCell.cellNumberLbl.text = "\(indexPath.row + 1)"
+            
+            return dogCell
+            
+        } else {
+            let addCell = tableView.dequeueReusableCell(withIdentifier: "addRow", for: indexPath) as! AddRowCell
+            
+            return addCell
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        if indexPath.row < numDogs {
+            return 315
+            
+        } else {
+            return 80
+        }
+    }
+    
     @IBAction func youBtnPressed(_ sender: Any) {
         
+        signUpScrollView.isScrollEnabled = true
         signUpProgBar.animate(duration: 0.5, value: Float(0.25))
         signUpScrollView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
         pageNumber = 0
@@ -350,9 +405,11 @@ class SignUpVC: UIViewController, UITextFieldDelegate, UIScrollViewDelegate, UIN
     @IBAction func dogsBtnPressed(_ sender: Any) {
         
         if checkInputs() {
+            
             signUpProgBar.animate(duration: 0.5, value: Float(0.75))
             signUpScrollView.setContentOffset(CGPoint(x: view.frame.size.width, y: 0), animated: true)
             pageNumber = 1
+            signUpScrollView.isScrollEnabled = false
             
             youLbl.font = UIFont(name: "Avenir-Medium", size: 16.0)
             dogsLbl.font = UIFont(name: "Avenir-Heavy", size: 16.0)

@@ -7,10 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		203345631F8D5DB50017CD3D /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 203345621F8D5DB50017CD3D /* Colors.swift */; };
+		203345661F8D618A0017CD3D /* AddDogCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 203345641F8D618A0017CD3D /* AddDogCell.swift */; };
+		203345671F8D618A0017CD3D /* AddDogCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 203345651F8D618A0017CD3D /* AddDogCell.xib */; };
 		20356F081F6C47F1006466A2 /* SignInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20356F071F6C47F1006466A2 /* SignInVC.swift */; };
 		205066E51F8AE4F000343DCB /* AnimatedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205066E41F8AE4F000343DCB /* AnimatedTextField.swift */; };
 		205066E71F8AE53200343DCB /* TextFieldEffects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205066E61F8AE53200343DCB /* TextFieldEffects.swift */; };
 		205066E91F8AE60400343DCB /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205066E81F8AE60400343DCB /* SignUpVC.swift */; };
+		20AFF9471F8DC84B001ABD11 /* AddRowCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20AFF9451F8DC84B001ABD11 /* AddRowCell.swift */; };
+		20AFF9481F8DC84B001ABD11 /* AddRowCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 20AFF9461F8DC84B001ABD11 /* AddRowCell.xib */; };
 		7CB833F1F08EE3318220ECFC /* Pods_FetchTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 617A4FB241340E8F0EE132A7 /* Pods_FetchTests.framework */; };
 		83AB73CD621C8B94EB124A97 /* Pods_Fetch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CEDAC3E9C2FBE95E4FA01DB /* Pods_Fetch.framework */; };
 		ACC0A1921F6C221000D90519 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC0A1911F6C221000D90519 /* AppDelegate.swift */; };
@@ -43,10 +48,15 @@
 
 /* Begin PBXFileReference section */
 		1E3F85A997D3A42349EA6589 /* Pods-Fetch.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fetch.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Fetch/Pods-Fetch.debug.xcconfig"; sourceTree = "<group>"; };
+		203345621F8D5DB50017CD3D /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		203345641F8D618A0017CD3D /* AddDogCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDogCell.swift; sourceTree = "<group>"; };
+		203345651F8D618A0017CD3D /* AddDogCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddDogCell.xib; sourceTree = "<group>"; };
 		20356F071F6C47F1006466A2 /* SignInVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInVC.swift; sourceTree = "<group>"; };
 		205066E41F8AE4F000343DCB /* AnimatedTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedTextField.swift; sourceTree = "<group>"; };
 		205066E61F8AE53200343DCB /* TextFieldEffects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldEffects.swift; sourceTree = "<group>"; };
 		205066E81F8AE60400343DCB /* SignUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
+		20AFF9451F8DC84B001ABD11 /* AddRowCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRowCell.swift; sourceTree = "<group>"; };
+		20AFF9461F8DC84B001ABD11 /* AddRowCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddRowCell.xib; sourceTree = "<group>"; };
 		22C02B400DBE6E1BE9560EA4 /* Pods_FetchUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FetchUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3FCA53447C490C19EF564100 /* Pods-FetchUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FetchUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-FetchUITests/Pods-FetchUITests.release.xcconfig"; sourceTree = "<group>"; };
 		4F50D913A01892A33A0D4003 /* Pods-Fetch.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fetch.release.xcconfig"; path = "Pods/Target Support Files/Pods-Fetch/Pods-Fetch.release.xcconfig"; sourceTree = "<group>"; };
@@ -149,6 +159,11 @@
 				205066E41F8AE4F000343DCB /* AnimatedTextField.swift */,
 				205066E61F8AE53200343DCB /* TextFieldEffects.swift */,
 				205066E81F8AE60400343DCB /* SignUpVC.swift */,
+				203345621F8D5DB50017CD3D /* Colors.swift */,
+				203345641F8D618A0017CD3D /* AddDogCell.swift */,
+				203345651F8D618A0017CD3D /* AddDogCell.xib */,
+				20AFF9451F8DC84B001ABD11 /* AddRowCell.swift */,
+				20AFF9461F8DC84B001ABD11 /* AddRowCell.xib */,
 			);
 			path = Fetch;
 			sourceTree = "<group>";
@@ -301,7 +316,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				20AFF9481F8DC84B001ABD11 /* AddRowCell.xib in Resources */,
 				ACC0A19E1F6C221000D90519 /* LaunchScreen.storyboard in Resources */,
+				203345671F8D618A0017CD3D /* AddDogCell.xib in Resources */,
 				ACCE942F1F8C469900BBFE33 /* GoogleService-Info.plist in Resources */,
 				ACC0A19B1F6C221000D90519 /* Assets.xcassets in Resources */,
 				ACC0A1991F6C221000D90519 /* Main.storyboard in Resources */,
@@ -467,7 +484,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				20AFF9471F8DC84B001ABD11 /* AddRowCell.swift in Sources */,
 				205066E91F8AE60400343DCB /* SignUpVC.swift in Sources */,
+				203345661F8D618A0017CD3D /* AddDogCell.swift in Sources */,
+				203345631F8D5DB50017CD3D /* Colors.swift in Sources */,
 				ACC0A1961F6C221000D90519 /* SecondViewController.swift in Sources */,
 				ACC0A1921F6C221000D90519 /* AppDelegate.swift in Sources */,
 				205066E71F8AE53200343DCB /* TextFieldEffects.swift in Sources */,
