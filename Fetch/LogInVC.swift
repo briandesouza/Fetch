@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Firebase
+import SDWebImage
 
 class LogInVC: UIViewController, UIScrollViewDelegate, UITextFieldDelegate {
     
@@ -101,7 +103,15 @@ class LogInVC: UIViewController, UIScrollViewDelegate, UITextFieldDelegate {
     }
     
     @objc func signInBtnPressed() {
-    
+        
+        Auth.auth().signIn(withEmail: usernameField.text!.lowercased() , password: passField.text!) { (user, error) in
+            if error != nil {
+                print("failure")
+                return
+            }
+            print("success")
+            //example of how to get url image sdimage : self.mainImg.sd_setImage(with:user?.photoURL!)
+        }
         
     }
     
@@ -120,3 +130,4 @@ class LogInVC: UIViewController, UIScrollViewDelegate, UITextFieldDelegate {
     */
 
 }
+
