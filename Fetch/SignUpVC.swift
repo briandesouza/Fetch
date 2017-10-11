@@ -9,6 +9,8 @@
 import UIKit
 import Firebase
 
+var indexPressed: Int = 0
+
 class SignUpVC: UIViewController, UITextFieldDelegate, UIScrollViewDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITableViewDelegate, UITableViewDataSource, AddRowDelegate {
     
     
@@ -421,6 +423,7 @@ class SignUpVC: UIViewController, UITextFieldDelegate, UIScrollViewDelegate, UIN
             
             dogCell.cellNumberLbl.text = "\(indexPath.row + 1)"
             dogCell.dogImgBtn.tag = indexPath.row
+            dogCell.index = indexPath.row
             
             return dogCell
             

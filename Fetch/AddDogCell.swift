@@ -23,6 +23,7 @@ class AddDogCell: UITableViewCell, UINavigationControllerDelegate, UIImagePicker
     @IBOutlet weak var dogImgBtn: UIButton!
     
     var ageNum = 1
+    var index: Int = 0
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -61,7 +62,8 @@ class AddDogCell: UITableViewCell, UINavigationControllerDelegate, UIImagePicker
     }
     
     @IBAction func dogImgBtnPressed(_ sender: Any) {
-
+        indexPressed = index
+        print("indexPressed", indexPressed)
     }
     
     @IBAction func minusAgeBtnPressed(_ sender: Any) {
