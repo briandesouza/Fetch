@@ -36,6 +36,7 @@ class AddDogCell: UITableViewCell, UINavigationControllerDelegate, UIImagePicker
         dogImg.layer.cornerRadius = 46
         dogImg.layer.masksToBounds = true
         dogImg.contentMode = .scaleAspectFill
+        dogImg.backgroundColor = UIColor.white
         
         addCircBack.layer.cornerRadius = 16
         addCircImg.layer.cornerRadius = 13
@@ -43,7 +44,7 @@ class AddDogCell: UITableViewCell, UINavigationControllerDelegate, UIImagePicker
         addCircImg.contentMode = .scaleAspectFill
         
         ageLbl.text = "\(ageNum)"
-        dogImg.image = UIImage(named: "personplaceholder")
+        dogImg.image = UIImage(named: "dogholder")
         
     }
 
