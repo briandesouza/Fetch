@@ -148,6 +148,7 @@ class SignInVC: UIViewController, UIScrollViewDelegate {
     }
     
     @IBAction func signInBtnPressed(_ sender: Any) {
+        try! Auth.auth().signOut()
         performSegue(withIdentifier: "goSignUp", sender: self)
     }
 

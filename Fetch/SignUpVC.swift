@@ -151,11 +151,13 @@ class SignUpVC: UIViewController, UITextFieldDelegate, UIScrollViewDelegate, UIN
     
     @objc func checkInputs() -> Bool {
         
+        var state = true
+        
         let inputEmail = emailField.text?.lowercased()
         let inputPass = passField.text
         
         //Check If All Fields Are Filled
-        if(emailField.text == ""){
+        if(inputEmail == ""){
             self.nextBtn.setTitle("Email Not Inserted", for: .normal)
             return false
         }
@@ -177,15 +179,17 @@ class SignUpVC: UIViewController, UITextFieldDelegate, UIScrollViewDelegate, UIN
         }
         
         //Check if password match
-        if(passField.text != conPassField.text){
+        if(inputPass! != conPassField.text){
             self.nextBtn.setTitle("Passwords Do Not Match", for: .normal)
             return false
         }
         
         Auth.auth().createUser(withEmail: inputEmail!, password: inputPass!) { (user, error) in
             if(error != nil){
-                self.nextBtn.setTitle("\(String(describing: error?.localizedDescription))", for: .normal) //This is the error description
-                print(String(describing: error?.localizedDescription))
+                if Auth.auth().currentUser == nil {
+                    self.nextBtn.setTitle("\(String(describing: error!.localizedDescription))", for: .normal) //This is the error description
+                }
+                state = false
                 return
                 //handles error
             }
@@ -218,8 +222,20 @@ class SignUpVC: UIViewController, UITextFieldDelegate, UIScrollViewDelegate, UIN
                 }
             }
         }
-        //TODO: Check for valid inpus in all fields for the main profile
-        return true
+        sleep(2)
+        if state{
+            if Auth.auth().currentUser != nil {
+            print("did work")
+                return true
+            }
+            else{
+                return false
+            }
+        }
+        else{
+            print("didn't work")
+            return false
+        }
     }
     
     @objc func checkDogInputs() -> Bool {
@@ -343,7 +359,7 @@ class SignUpVC: UIViewController, UITextFieldDelegate, UIScrollViewDelegate, UIN
         
         if pageNumber == 0 {
             
-            if true {
+            if checkInputs() {
                 
                 print("Good Profile Info!")
                 youLbl.font = UIFont(name: "Avenir-Medium", size: 16.0)
