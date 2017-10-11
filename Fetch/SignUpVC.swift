@@ -2,7 +2,7 @@
 //  SignUpVC.swift
 //  Fetch
 //
-//  Created by Pablo Garces on 10/8/17.
+//  Created by Pablo Garces and Brian De Souza on 10/8/17.
 //  Copyright © 2017 Fetch. All rights reserved.
 //
 
@@ -181,7 +181,6 @@ class SignUpVC: UIViewController, UITextFieldDelegate, UIScrollViewDelegate, UIN
             return false
         }
         
-        
         Auth.auth().createUser(withEmail: inputEmail!, password: inputPass!) { (user, error) in
             if(error != nil){
                 self.nextBtn.setTitle("\(String(describing: error?.localizedDescription))", for: .normal) //This is the error description
@@ -207,8 +206,13 @@ class SignUpVC: UIViewController, UITextFieldDelegate, UIScrollViewDelegate, UIN
                             print(error.debugDescription)
                             return
                         }
-                        //Saves Image URL to user's firebase database
-                        self.ref.child("users").child((user?.uid)!).child("profileURL").setValue(metadata?.downloadURL()!)
+                    
+                        //Saves Photo URL to users firebae profile
+                        let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
+                        changeRequest?.displayName = self.nameField.text?.capitalized
+                        changeRequest?.photoURL = metadata?.downloadURL()!
+                            changeRequest?.commitChanges { (error) in
+                        }
                     })
                 }
             }
