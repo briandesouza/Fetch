@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Firebase
+import SDWebImage
 
 class ProfileVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UITableViewDelegate, UITableViewDataSource {
 
@@ -21,6 +23,15 @@ class ProfileVC: UIViewController, UICollectionViewDelegate, UICollectionViewDat
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let user = Auth.auth().currentUser
+        if let user = user {
+        
+            self.profileImg.sd_setImage(with:user.photoURL!)
+            mainTitle.text = user.displayName!
+            collectionTitle.text = "\(user.displayName!) has x dogs:"
+            
+        }
         
         imageBack.layer.cornerRadius = 40
         profileImg.layer.cornerRadius = 36

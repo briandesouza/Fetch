@@ -109,7 +109,8 @@ class LogInVC: UIViewController, UIScrollViewDelegate, UITextFieldDelegate {
                 print("failure")
                 return
             }
-            print("success")
+            
+            self.performSegue(withIdentifier: "goTabs", sender: self)
             //example of how to get url image sdimage : self.mainImg.sd_setImage(with:user?.photoURL!)
         }
         
