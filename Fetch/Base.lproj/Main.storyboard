@@ -304,7 +304,7 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </textField>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Pzv-uS-nfG" customClass="AnimatedTextField" customModule="Fetch" customModuleProvider="target">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Pzv-uS-nfG" customClass="AnimatedTextField" customModule="Fetch" customModuleProvider="target">
                                                 <rect key="frame" x="12" y="320" width="351" height="50"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="DP9-BM-RJW"/>
