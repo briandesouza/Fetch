@@ -420,6 +420,7 @@ class SignUpVC: UIViewController, UITextFieldDelegate, UIScrollViewDelegate, UIN
             let dogCell = tableView.dequeueReusableCell(withIdentifier: "dogCell", for: indexPath) as! AddDogCell
             
             dogCell.cellNumberLbl.text = "\(indexPath.row + 1)"
+            dogCell.dogImgBtn.tag = indexPath.row
             
             return dogCell
             

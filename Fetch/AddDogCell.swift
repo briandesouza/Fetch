@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AddDogCell: UITableViewCell {
+class AddDogCell: UITableViewCell, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
     @IBOutlet weak var dogImgBack: UIView!
     @IBOutlet weak var dogImg: UIImageView!
@@ -20,6 +20,7 @@ class AddDogCell: UITableViewCell {
     @IBOutlet weak var dogNameField: AnimatedTextField!
     @IBOutlet weak var dogBreedField: AnimatedTextField!
     @IBOutlet weak var cellNumberLbl: UILabel!
+    @IBOutlet weak var dogImgBtn: UIButton!
     
     var ageNum = 1
     
@@ -57,6 +58,10 @@ class AddDogCell: UITableViewCell {
         }
         
         ageLbl.text = "\(ageNum)"
+    }
+    
+    @IBAction func dogImgBtnPressed(_ sender: Any) {
+
     }
     
     @IBAction func minusAgeBtnPressed(_ sender: Any) {
