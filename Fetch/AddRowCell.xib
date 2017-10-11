@@ -73,6 +73,7 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="addDogBtn" destination="mux-Kz-Wta" id="AII-Cr-IRS"/>
                 <outlet property="addImg" destination="NCG-i8-MhU" id="B9t-Ak-Ioc"/>
             </connections>
         </tableViewCell>

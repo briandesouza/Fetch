@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-class SignUpVC: UIViewController, UITextFieldDelegate, UIScrollViewDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITableViewDelegate, UITableViewDataSource {
+class SignUpVC: UIViewController, UITextFieldDelegate, UIScrollViewDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITableViewDelegate, UITableViewDataSource, AddRowDelegate {
     
     
     // --- IBs
@@ -35,6 +35,7 @@ class SignUpVC: UIViewController, UITextFieldDelegate, UIScrollViewDelegate, UIN
     @IBOutlet weak var dogsLbl: UILabel!
     @IBOutlet weak var topHeader: UIView!
     @IBOutlet weak var topLine: UIView!
+    @IBOutlet weak var backBtn: UIButton!
     
     // --- Views
     var nextBtn = UIButton()
@@ -352,6 +353,7 @@ class SignUpVC: UIViewController, UITextFieldDelegate, UIScrollViewDelegate, UIN
                 signUpScrollView.isScrollEnabled = false
                 
             } else {
+                
                 print("Incorrect Info!")
             }
             
@@ -395,6 +397,20 @@ class SignUpVC: UIViewController, UITextFieldDelegate, UIScrollViewDelegate, UIN
         }
     }
     
+    func addRowBtnTapped() {
+        
+        numDogs = numDogs + 1
+        
+        dogsTableView.beginUpdates()
+        dogsTableView.insertRows(at: [
+            NSIndexPath(row: numDogs, section: 0) as IndexPath
+            ], with: .automatic)
+
+        dogsTableView.endUpdates()
+        
+        print("NUM DOGS: ", numDogs)
+    }
+    
     @IBAction func youBtnPressed(_ sender: Any) {
         
         signUpScrollView.isScrollEnabled = true
@@ -434,6 +450,12 @@ class SignUpVC: UIViewController, UITextFieldDelegate, UIScrollViewDelegate, UIN
             self.present(imagePicker, animated: true, completion: nil)
         }
     }
+    
+    @IBAction func backBtnPressed(_ sender: Any) {
+        
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     
     internal func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         
