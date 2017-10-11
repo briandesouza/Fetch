@@ -97,7 +97,6 @@ class SignUpVC: UIViewController, UITextFieldDelegate, UIScrollViewDelegate, UIN
         dogsTableView.frame = CGRect(x: view.frame.size.width, y: 0, width: view.frame.size.width, height: view.frame.size.height - (topHeader.frame.size.height + topLine.frame.size.height + nextBtn.frame.size.height + 20))
         dogsTableView.delegate = self
         dogsTableView.dataSource = self
-        dogsTableView.backgroundColor = UIColor.red
         dogsTableView.register(UINib(nibName: "AddDogCell", bundle: nil), forCellReuseIdentifier: "dogCell")
         dogsTableView.register(UINib(nibName: "AddRowCell", bundle: nil), forCellReuseIdentifier: "addRow")
         //dogsTableView.contentInset = .init(top: 15, left: 0, bottom: 0, right: 0)
