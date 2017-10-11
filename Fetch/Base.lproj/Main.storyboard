@@ -672,10 +672,10 @@
             </objects>
             <point key="canvasLocation" x="-1890.4000000000001" y="736.28185907046486"/>
         </scene>
-        <!--Sign UpVC-->
+        <!--SignUpVC-->
         <scene sceneID="NJQ-gV-kmE">
             <objects>
-                <viewController id="Za0-Vn-TmU" customClass="SignUpVC" customModule="Fetch" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController restorationIdentifier="SignUpVC" storyboardIdentifier="SignUpVC" title="SignUpVC" id="Za0-Vn-TmU" customClass="SignUpVC" customModule="Fetch" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Y0e-u2-yLj"/>
                         <viewControllerLayoutGuide type="bottom" id="e4h-wb-S8B"/>
@@ -1170,7 +1170,7 @@
         <image name="second" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="NeA-AF-3G8"/>
+        <segue reference="pqK-4I-0gr"/>
         <segue reference="HGX-sW-qU3"/>
     </inferredMetricsTieBreakers>
 </document>

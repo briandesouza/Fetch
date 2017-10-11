@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AddDogCell: UITableViewCell, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+class AddDogCell: UITableViewCell, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UIViewControllerTransitioningDelegate {
     
     @IBOutlet weak var dogImgBack: UIView!
     @IBOutlet weak var dogImg: UIImageView!
@@ -24,6 +24,7 @@ class AddDogCell: UITableViewCell, UINavigationControllerDelegate, UIImagePicker
     
     var ageNum = 1
     var index: Int = 0
+    var imagePicker = UIImagePickerController()
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -63,6 +64,12 @@ class AddDogCell: UITableViewCell, UINavigationControllerDelegate, UIImagePicker
     
     @IBAction func dogImgBtnPressed(_ sender: Any) {
         indexPressed = index
+        
+        let storyboard: UIStoryboard = UIStoryboard.init(name: "Main", bundle: nil)
+        let signUpVC: SignUpVC = storyboard.instantiateViewController(withIdentifier: "SignUpVC") as! SignUpVC & UIImagePickerControllerDelegate
+        
+        signUpVC.abc123()
+        
         print("indexPressed", indexPressed)
     }
     
