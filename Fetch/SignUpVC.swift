@@ -148,15 +148,82 @@ class SignUpVC: UIViewController, UITextFieldDelegate, UIScrollViewDelegate, UIN
         //pageNumber = Int(signUpScrollView.contentOffset.x / view.frame.size.width)
     }
     
+    func createAcct(){
+        Auth.auth().createUser(withEmail: emailField.text!.lowercased(), password: passField.text!) { (user, error) in
+            if(error != nil){
+                if Auth.auth().currentUser == nil {
+                     self.nextBtn.setTitle("\(String(describing: error!.localizedDescription))", for: .normal) //This is the error description
+                }
+                return
+                //handles error
+            }
+            
+            //Sets user's private values in the database
+            self.ref.child("users").child((user?.uid)!).child("username").setValue(self.usernameField.text)
+            self.ref.child("users").child((user?.uid)!).child("name").setValue(self.nameField.text?.capitalized)
+            self.ref.child("users").child((user?.uid)!).child("phone").setValue(self.phoneField.text)
+            self.ref.child("users").child((user?.uid)!).child("city").setValue(self.self.cityField.text?.capitalized)
+            
+            
+            //Uploading Profile image to Firebase Storage
+            if self.profilePicImg.image != nil {
+                let storage = Storage.storage()
+                let storageRef = storage.reference().child("profiles/\(String(describing: self.usernameField.text!))/\(String(describing: self.usernameField.text!)).png")
+                if let uploadData = UIImagePNGRepresentation(self.profilePicImg.image!){
+                    storageRef.putData(uploadData, metadata: nil , completion: { (metadata, error) in
+                        if error != nil{
+                            print(error.debugDescription)
+                            return
+                        }
+                        
+                        //Saves Photo URL to users firebae profile
+                        let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
+                        changeRequest?.displayName = self.nameField.text?.capitalized
+                        changeRequest?.photoURL = metadata?.downloadURL()!
+                        changeRequest?.commitChanges { (error) in
+                        }
+                    })
+                }
+            }
+        }
+    }
+    
+    func saveDogsDB(){
+        
+        //let dogName = Get dog name
+        //let dogAge = Get dog age
+        
+        let storage = Storage.storage()
+        for x in 0..<numDogs{
+            
+            let uniqueID = NSUUID().uuidString
+            //Store Image
+            /*
+            let storageRef = storage.reference().child("profiles/\(String(describing: self.usernameField.text!))/uniqueID.png")
+            if let uploadData = UIImagePNGRepresentation(self.profilePicImg.image!){
+                storageRef.putData(uploadData, metadata: nil , completion: { (metadata, error) in
+                    if error != nil{
+                        print(error.debugDescription)
+                        return
+                    }
+             
+                     let dogImageURl = String(contentsOf: metadata?.downloadURL()!)
+                     self.ref.child("users").child((user?.uid)!).child("dogs/\(uniqueID)/name").setValue(dogName)
+                     self.ref.child("users").child((user?.uid)!).child("dogs/\(uniqueID)/imageURL").setValue(dogImageURL)
+                     self.ref.child("users").child((user?.uid)!).child("dogs/\(uniqueID)/age").setValue(dogAge)
+             
+                    }
+                })
+            }
+         */
+        
+        }
+    }
+    
     @objc func checkInputs() -> Bool {
         
-        var state = true
-        
-        let inputEmail = emailField.text?.lowercased()
-        let inputPass = passField.text
-        
         //Check If All Fields Are Filled
-        if(inputEmail == ""){
+        if(emailField.text!.lowercased() == ""){
             self.nextBtn.setTitle("Email Not Inserted", for: .normal)
             return false
         }
@@ -178,63 +245,21 @@ class SignUpVC: UIViewController, UITextFieldDelegate, UIScrollViewDelegate, UIN
         }
         
         //Check if password match
-        if(inputPass! != conPassField.text){
+        if(passField.text! != conPassField.text){
             self.nextBtn.setTitle("Passwords Do Not Match", for: .normal)
             return false
         }
         
-        Auth.auth().createUser(withEmail: inputEmail!, password: inputPass!) { (user, error) in
-            if(error != nil){
-                if Auth.auth().currentUser == nil {
-                    self.nextBtn.setTitle("\(String(describing: error!.localizedDescription))", for: .normal) //This is the error description
-                }
-                state = false
-                return
-                //handles error
-            }
-            
-            //Sets user's private values in the database
-            self.ref.child("users").child((user?.uid)!).child("username").setValue(self.usernameField.text)
-            self.ref.child("users").child((user?.uid)!).child("name").setValue(self.nameField.text?.capitalized)
-            self.ref.child("users").child((user?.uid)!).child("phone").setValue(self.phoneField.text)
-            self.ref.child("users").child((user?.uid)!).child("city").setValue(self.self.cityField.text?.capitalized)
-            
-            
-            //Uploading Profile image to Firebase Storage
-            if self.profilePicImg.image != nil {
-                let storage = Storage.storage()
-                let storageRef = storage.reference().child("profiles/\(String(describing: self.usernameField.text!)).png")
-                if let uploadData = UIImagePNGRepresentation(self.profilePicImg.image!){
-                    storageRef.putData(uploadData, metadata: nil , completion: { (metadata, error) in
-                        if error != nil{
-                            print(error.debugDescription)
-                            return
-                        }
-                    
-                        //Saves Photo URL to users firebae profile
-                        let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
-                        changeRequest?.displayName = self.nameField.text?.capitalized
-                        changeRequest?.photoURL = metadata?.downloadURL()!
-                            changeRequest?.commitChanges { (error) in
-                        }
-                    })
-                }
-            }
-        }
+        self.createAcct()
+        
         sleep(2)
-        if state{
-            if Auth.auth().currentUser != nil {
+        if Auth.auth().currentUser != nil {
             print("did work")
                 return true
             }
             else{
                 return false
             }
-        }
-        else{
-            print("didn't work")
-            return false
-        }
     }
     
     @objc func checkDogInputs() -> Bool {
@@ -372,6 +397,7 @@ class SignUpVC: UIViewController, UITextFieldDelegate, UIScrollViewDelegate, UIN
             }
             
         } else {
+            
             
             // Segue Here if Dog Info is Good
             
