@@ -472,6 +472,11 @@ class SignUpVC: UIViewController, UITextFieldDelegate, UIScrollViewDelegate, UIN
         self.dismiss(animated: true, completion: nil)
     }
     
+    @IBAction func skipBtnPressed(_ sender: Any) {
+        
+        performSegue(withIdentifier: "goTabs", sender: self)
+    }
+    
     
     internal func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         

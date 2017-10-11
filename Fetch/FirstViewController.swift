@@ -31,6 +31,14 @@ class FirstViewController: UIViewController {
 
     }
     
+    @IBAction func profileBtnPressed(_ sender: Any) {
+        performSegue(withIdentifier: "goProfile", sender: self)
+    }
+    
+    @IBAction func skipToSignUo(_ sender: Any) {
+        performSegue(withIdentifier: "goSignup", sender: self)
+    }
+    
     override func viewWillDisappear(_ animated: Bool) {
         Auth.auth().removeStateDidChangeListener(handle!)
     }

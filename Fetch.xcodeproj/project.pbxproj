@@ -17,6 +17,9 @@
 		20AFF9471F8DC84B001ABD11 /* AddRowCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20AFF9451F8DC84B001ABD11 /* AddRowCell.swift */; };
 		20AFF9481F8DC84B001ABD11 /* AddRowCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 20AFF9461F8DC84B001ABD11 /* AddRowCell.xib */; };
 		20AFF94A1F8DE395001ABD11 /* LogInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20AFF9491F8DE395001ABD11 /* LogInVC.swift */; };
+		20AFF94C1F8DF74E001ABD11 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20AFF94B1F8DF74E001ABD11 /* ProfileVC.swift */; };
+		20AFF94E1F8DF876001ABD11 /* ProfileDogCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20AFF94D1F8DF876001ABD11 /* ProfileDogCell.swift */; };
+		20AFF9501F8DF8E0001ABD11 /* ProfileListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20AFF94F1F8DF8E0001ABD11 /* ProfileListCell.swift */; };
 		7CB833F1F08EE3318220ECFC /* Pods_FetchTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 617A4FB241340E8F0EE132A7 /* Pods_FetchTests.framework */; };
 		83AB73CD621C8B94EB124A97 /* Pods_Fetch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CEDAC3E9C2FBE95E4FA01DB /* Pods_Fetch.framework */; };
 		ACC0A1921F6C221000D90519 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC0A1911F6C221000D90519 /* AppDelegate.swift */; };
@@ -59,6 +62,9 @@
 		20AFF9451F8DC84B001ABD11 /* AddRowCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRowCell.swift; sourceTree = "<group>"; };
 		20AFF9461F8DC84B001ABD11 /* AddRowCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddRowCell.xib; sourceTree = "<group>"; };
 		20AFF9491F8DE395001ABD11 /* LogInVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInVC.swift; sourceTree = "<group>"; };
+		20AFF94B1F8DF74E001ABD11 /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
+		20AFF94D1F8DF876001ABD11 /* ProfileDogCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDogCell.swift; sourceTree = "<group>"; };
+		20AFF94F1F8DF8E0001ABD11 /* ProfileListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileListCell.swift; sourceTree = "<group>"; };
 		22C02B400DBE6E1BE9560EA4 /* Pods_FetchUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FetchUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3FCA53447C490C19EF564100 /* Pods-FetchUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FetchUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-FetchUITests/Pods-FetchUITests.release.xcconfig"; sourceTree = "<group>"; };
 		4F50D913A01892A33A0D4003 /* Pods-Fetch.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fetch.release.xcconfig"; path = "Pods/Target Support Files/Pods-Fetch/Pods-Fetch.release.xcconfig"; sourceTree = "<group>"; };
@@ -167,6 +173,9 @@
 				20AFF9451F8DC84B001ABD11 /* AddRowCell.swift */,
 				20AFF9461F8DC84B001ABD11 /* AddRowCell.xib */,
 				20AFF9491F8DE395001ABD11 /* LogInVC.swift */,
+				20AFF94B1F8DF74E001ABD11 /* ProfileVC.swift */,
+				20AFF94D1F8DF876001ABD11 /* ProfileDogCell.swift */,
+				20AFF94F1F8DF8E0001ABD11 /* ProfileListCell.swift */,
 			);
 			path = Fetch;
 			sourceTree = "<group>";
@@ -487,11 +496,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				20AFF94C1F8DF74E001ABD11 /* ProfileVC.swift in Sources */,
 				20AFF9471F8DC84B001ABD11 /* AddRowCell.swift in Sources */,
 				205066E91F8AE60400343DCB /* SignUpVC.swift in Sources */,
 				203345661F8D618A0017CD3D /* AddDogCell.swift in Sources */,
 				203345631F8D5DB50017CD3D /* Colors.swift in Sources */,
 				ACC0A1961F6C221000D90519 /* SecondViewController.swift in Sources */,
+				20AFF94E1F8DF876001ABD11 /* ProfileDogCell.swift in Sources */,
+				20AFF9501F8DF8E0001ABD11 /* ProfileListCell.swift in Sources */,
 				ACC0A1921F6C221000D90519 /* AppDelegate.swift in Sources */,
 				205066E71F8AE53200343DCB /* TextFieldEffects.swift in Sources */,
 				20356F081F6C47F1006466A2 /* SignInVC.swift in Sources */,
