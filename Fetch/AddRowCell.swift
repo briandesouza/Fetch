@@ -11,6 +11,9 @@ import UIKit
 class AddRowCell: UITableViewCell {
     
     @IBOutlet weak var addImg: UIImageView!
+    @IBOutlet weak var addDogBtn: UIButton!
+    
+    weak var delegate: AddRowDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -18,6 +21,8 @@ class AddRowCell: UITableViewCell {
         
         addImg.layer.cornerRadius = 20
         addImg.layer.masksToBounds = true
+        
+        //addDogBtn.addTarget(self, action: #selector(SignUpVC.addRowBtnTapped), for: .touchUpInside)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -27,6 +32,10 @@ class AddRowCell: UITableViewCell {
     }
     
     @IBAction func addRowBtnPressed(_ sender: Any) {
-
+        delegate?.addRowBtnTapped()
     }
+}
+
+protocol AddRowDelegate: class {
+    func addRowBtnTapped()
 }

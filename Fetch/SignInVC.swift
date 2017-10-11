@@ -153,5 +153,6 @@ class SignInVC: UIViewController, UIScrollViewDelegate {
     }
 
     @IBAction func signUpBtnPressed(_ sender: Any) {
+        performSegue(withIdentifier: "goSignIn", sender: self)
     }
 }
