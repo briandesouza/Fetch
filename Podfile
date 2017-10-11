@@ -10,6 +10,8 @@ target 'Fetch' do
   pod 'Firebase/Auth'
   pod 'Firebase/Storage'
   pod 'Firebase/Database'
+  pod 'SDWebImage'
+  pod 'SDWebImage/WebP'
 
   target 'FetchTests' do
     inherit! :search_paths

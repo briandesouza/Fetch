@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import SDWebImage
 
 class LogInVC: UIViewController, UIScrollViewDelegate, UITextFieldDelegate {
     
@@ -109,6 +110,7 @@ class LogInVC: UIViewController, UIScrollViewDelegate, UITextFieldDelegate {
                 return
             }
             print("success")
+            //example of how to get url image sdimage : self.mainImg.sd_setImage(with:user?.photoURL!)
         }
         
     }

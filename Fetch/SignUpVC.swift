@@ -187,6 +187,7 @@ class SignUpVC: UIViewController, UITextFieldDelegate, UIScrollViewDelegate, UIN
                 }
             }
         }
+        
     }
     
     func saveDogsDB(){
