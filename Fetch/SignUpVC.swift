@@ -9,6 +9,8 @@
 import UIKit
 import Firebase
 
+var indexPressed: Int = 0
+
 class SignUpVC: UIViewController, UITextFieldDelegate, UIScrollViewDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITableViewDelegate, UITableViewDataSource, AddRowDelegate {
     
     
@@ -48,6 +50,8 @@ class SignUpVC: UIViewController, UITextFieldDelegate, UIScrollViewDelegate, UIN
     // --- Bools
     var firstTimeOpen = false
     var firstAnimation = false
+    
+    // --- Firebase
     var ref: DatabaseReference!
     
     
@@ -107,11 +111,6 @@ class SignUpVC: UIViewController, UITextFieldDelegate, UIScrollViewDelegate, UIN
         dogsTableView.showsVerticalScrollIndicator = false
         signUpScrollView.addSubview(dogsTableView)
 
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-    
-        
     }
 
     override func didReceiveMemoryWarning() {
@@ -251,16 +250,8 @@ class SignUpVC: UIViewController, UITextFieldDelegate, UIScrollViewDelegate, UIN
             return false
         }
         
-        self.createAcct()
-        
-        sleep(2)
-        if Auth.auth().currentUser != nil {
-            print("did work")
-                return true
-            }
-            else{
-                return false
-            }
+        self.nextBtn.setTitle("NEXT", for: .normal)
+        return true
     }
     
     @objc func checkDogInputs() -> Bool {
@@ -303,6 +294,17 @@ class SignUpVC: UIViewController, UITextFieldDelegate, UIScrollViewDelegate, UIN
         })
     }
     
+    func abc123(){
+        if UIImagePickerController.isSourceTypeAvailable(.savedPhotosAlbum) {
+            print("Button capture")
+            
+            imagePicker.delegate = self
+            imagePicker.sourceType = .savedPhotosAlbum
+            imagePicker.allowsEditing = false
+            
+            self.present(imagePicker, animated: true, completion: nil)
+        }
+    }
     func animateTextFields() {
         
         nameField.alpha = 0.0
@@ -380,8 +382,6 @@ class SignUpVC: UIViewController, UITextFieldDelegate, UIScrollViewDelegate, UIN
     
     @objc func nextBtnPressed() {
         
-        print("Before: ", pageNumber)
-        
         if pageNumber == 0 {
             
             if checkInputs() {
@@ -392,6 +392,8 @@ class SignUpVC: UIViewController, UITextFieldDelegate, UIScrollViewDelegate, UIN
                 signUpProgBar.animate(duration: 0.5, value: Float(0.75))
                 signUpScrollView.setContentOffset(CGPoint(x: view.frame.size.width, y: 0), animated: true)
                 signUpScrollView.isScrollEnabled = false
+                //Changes Page
+                pageNumber = 1
                 
             } else {
                 
@@ -400,6 +402,15 @@ class SignUpVC: UIViewController, UITextFieldDelegate, UIScrollViewDelegate, UIN
             
         } else {
             
+            //Check Dog Input()
+            
+            self.createAcct()
+            
+            sleep(2)
+            
+            if Auth.auth().currentUser != nil {
+                performSegue(withIdentifier: "goTabs", sender: self)
+            }
             
             // Segue Here if Dog Info is Good
             
@@ -420,6 +431,7 @@ class SignUpVC: UIViewController, UITextFieldDelegate, UIScrollViewDelegate, UIN
             
             dogCell.cellNumberLbl.text = "\(indexPath.row + 1)"
             dogCell.dogImgBtn.tag = indexPath.row
+            dogCell.index = indexPath.row
             
             return dogCell
             
@@ -476,6 +488,7 @@ class SignUpVC: UIViewController, UITextFieldDelegate, UIScrollViewDelegate, UIN
             
             youLbl.font = UIFont(name: "Avenir-Medium", size: 16.0)
             dogsLbl.font = UIFont(name: "Avenir-Heavy", size: 16.0)
+            
         } else {
             print("Incorrect Info!")
         }
@@ -514,13 +527,4 @@ class SignUpVC: UIViewController, UITextFieldDelegate, UIScrollViewDelegate, UIN
         self.dismiss(animated: true, completion: nil)
     }
     
-}
-
-extension UIProgressView {
-    func animate(duration: Double, value: Float) {
-        
-        UIView.animate(withDuration: duration, delay: 0.0, options: .curveEaseOut, animations: {
-            self.setProgress(value, animated: true)
-        }, completion: nil)
-    }
 }
