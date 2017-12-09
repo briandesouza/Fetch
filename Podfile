@@ -12,6 +12,7 @@ target 'Fetch' do
   pod 'Firebase/Database'
   pod 'SDWebImage'
   pod 'SDWebImage/WebP'
+  pod 'ColorMatchTabs', '~> 2.0'
 
   target 'FetchTests' do
     inherit! :search_paths
