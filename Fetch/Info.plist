@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>CFBundlePackageType</key>
+	<string>APPL</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
@@ -14,8 +16,6 @@
 	<string>6.0</string>
 	<key>CFBundleName</key>
 	<string>$(PRODUCT_NAME)</string>
-	<key>CFBundlePackageType</key>
-	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
 	<key>CFBundleVersion</key>
@@ -26,6 +26,30 @@
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
+	<key>NSAppleMusicUsageDescription</key>
+	<string>Media Library is needed for storing pets images.</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Camera used for taking pets images.</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>Media Library is needed for storing pets images.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Used to recognize business logo</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>Location is needed for finding parks and tagging images.</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Location is needed for finding parks and tagging images.</string>
+	<key>NSLocationUsageDescription</key>
+	<string>Location is needed for finding parks and tagging images.</string>
+	<key>NSLocationAlwaysUsageDescription
+
+NSLocationAlwaysUsageDescription
+
+NSLocationAlwaysUsageDescription
+
+NSLocationAlwaysUsageDescription
+
+</key>
+	<string>Location is needed for finding parks and tagging images.</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>

@@ -61,6 +61,15 @@ class LogInVC: UIViewController, UIScrollViewDelegate, UITextFieldDelegate {
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        
+        if let location = glocalLocationManager?.location?.coordinate{
+            print("altitude", glocalLocationManager!.location!.altitude)
+            print("altitude", glocalLocationManager!.location!.coordinate.latitude)
+            print("altitude", glocalLocationManager!.location!.coordinate.longitude)
+        }
+        else{
+            print("Location FAILED")
+        }
     }
     
     @objc func keyboardWillShow(notification: NSNotification) {
